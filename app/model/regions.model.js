@@ -40,7 +40,7 @@ module.exports = {
   // data မဝင်သေးပါ
   updateRegion: (data, callBack) => {
     db.query(
-      `UPDATE REGIONS SET region_id=?, region_name=? WHERE region_id=?`,
+      `UPDATE REGIONS SET region_id=?,region_name=? WHERE region_id = ? `,
       [data.region_id, data.region_name],
       (err, results) => {
         if (err) {
