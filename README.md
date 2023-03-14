@@ -4,3 +4,5 @@
 4. npm install nodemon
 5. npm install dotenv
 6. npm install mysql2
+7. npm i body-parser
+8. npm i cors
