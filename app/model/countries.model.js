@@ -14,6 +14,7 @@ module.exports = {
       }
     );
   },
+
   getAll: (callBack) => {
     db.query(`SELECT * FROM COUNTRIES`, [], (err, results) => {
       if (err) {
@@ -23,6 +24,7 @@ module.exports = {
       return callBack(null, results);
     });
   },
+
   getOne: (country_id, callBack) => {
     db.query(
       `SELECT country_id, CountryName, region_id FROM COUNTRIES WHERE country_id = ?`,
@@ -36,10 +38,11 @@ module.exports = {
       }
     );
   },
+
   updateCountry: (data, callBack) => {
     db.query(
-      `UPDATE COUNTRIES SET country_id=?, CountryName=?, region_id=? WHERE country_id = ? `,
-      [data.country_id, data.CountryName, data.region_id],
+      `UPDATE COUNTRIES SET CountryName=? WHERE country_id = ? `,
+      [data.CountryName, data.country_id],
       (err, results) => {
         if (err) {
           callBack(err);
@@ -48,6 +51,7 @@ module.exports = {
       }
     );
   },
+
   deleteCountry: (data, callBack) => {
     db.query(
       `DELETE FROM COUNTRIES WHERE country_id = ?`,

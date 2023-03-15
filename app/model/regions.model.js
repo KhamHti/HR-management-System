@@ -14,6 +14,7 @@ module.exports = {
       }
     );
   },
+
   getAllRegionId: (callBack) => {
     db.query(`SELECT * FROM REGIONS`, [], (err, results) => {
       if (err) {
@@ -23,6 +24,7 @@ module.exports = {
       return callBack(null, results);
     });
   },
+
   getRegionByRegionID: (region_id, callBack) => {
     db.query(
       `SELECT region_id, region_name FROM REGIONS WHERE region_id = ?`,
@@ -50,6 +52,7 @@ module.exports = {
       }
     );
   },
+
   deleteRegion: (data, callBack) => {
     db.query(
       `DELETE FROM REGIONS WHERE region_id = ?`,

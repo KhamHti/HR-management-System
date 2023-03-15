@@ -23,6 +23,7 @@ module.exports = {
       });
     });
   },
+
   getAll: (req, res) => {
     getAllRegionId((err, results) => {
       if (err) {
@@ -35,6 +36,7 @@ module.exports = {
       });
     });
   },
+
   getOne: (req, res) => {
     const region_id = req.params.region_id;
     getRegionByRegionID(region_id, (err, results) => {
@@ -48,13 +50,13 @@ module.exports = {
           message: "Record not found",
         });
       }
-      // console.log(results);
       return res.json({
         success: 1,
         data: results,
       });
     });
   },
+
   update: (req, res) => {
     const body = req.body;
     updateRegion(body, (err, results) => {
@@ -62,18 +64,13 @@ module.exports = {
         console.log(err);
         return;
       }
-      // if (!results) {
-      //   return res.json({
-      //     success: 0,
-      //     message: "Content must not be empty",
-      //   });
-      // }
       return res.json({
         success: 1,
         message: "Region update successfully",
       });
     });
   },
+
   deleteRegion: (req, res) => {
     const body = req.body;
     deleteRegion(body, (err, results) => {

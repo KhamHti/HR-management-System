@@ -23,6 +23,7 @@ module.exports = {
       });
     });
   },
+
   getAll: (req, res) => {
     getAll((err, results) => {
       if (err) {
@@ -35,6 +36,7 @@ module.exports = {
       });
     });
   },
+
   getOne: (req, res) => {
     const country_id = req.params.country_id;
     getOne(country_id, (err, results) => {
@@ -54,6 +56,7 @@ module.exports = {
       });
     });
   },
+
   updateCountry: (req, res) => {
     const data = req.body;
     updateCountry(data, (err, results) => {
@@ -67,6 +70,7 @@ module.exports = {
       });
     });
   },
+
   deleteCountry: (req, res) => {
     const body = req.body;
     deleteCountry(body, (err, results) => {
