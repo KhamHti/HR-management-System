@@ -3,6 +3,7 @@ const {
   getAllLocation,
   getLocationByLocationId,
   updatLocation,
+  deleteLocation,
 } = require("../model/locations.model");
 
 module.exports = {
@@ -69,6 +70,25 @@ module.exports = {
       return res.json({
         success: 1,
         message: "Update location successfully",
+      });
+    });
+  },
+  deleteLocation: (req, res) => {
+    const body = req.body;
+    deleteLocation(body, (err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      if (!results) {
+        return res.json({
+          success: 0,
+          message: "Location id not found",
+        });
+      }
+      return res.json({
+        success: 1,
+        message: "Delete location successfully",
       });
     });
   },

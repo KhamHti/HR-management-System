@@ -64,4 +64,17 @@ module.exports = {
       }
     );
   },
+  deleteLocation: (data, callBack) => {
+    db.query(
+      `DELETE FROM LOCATIONS WHERE location_id=?`,
+      [data.location_id],
+      (err, results) => {
+        if (err) {
+          console.log(err);
+          return callBack(err);
+        }
+        return callBack(null, results);
+      }
+    );
+  },
 };
