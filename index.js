@@ -5,6 +5,7 @@ const cors = require("cors");
 const regionRouter = require("./app/routes/regions.route");
 const countryRouter = require("./app/routes/countries.route");
 const jobsRouter = require("./app/routes/jobs.route");
+const locationRouter = require("./app/routes/locations.route");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 app.use("/regions", regionRouter);
 app.use("/countries", countryRouter);
 app.use("/jobs", jobsRouter);
+app.use("/locations", locationRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running at Port :", process.env.PORT);

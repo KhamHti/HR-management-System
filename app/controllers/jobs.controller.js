@@ -1,4 +1,10 @@
-const { create, getAll, getOne } = require("../model/jobs.model");
+const {
+  create,
+  getAll,
+  getOne,
+  updateJobs,
+  deleteJobs,
+} = require("../model/jobs.model");
 
 module.exports = {
   create: (req, res) => {
@@ -46,6 +52,39 @@ module.exports = {
       return res.json({
         success: 1,
         data: results,
+      });
+    });
+  },
+  updateJobs: (req, res) => {
+    const data = req.body;
+    updateJobs(data, (err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      return res.json({
+        success: 1,
+        message: "Update jobs successfully",
+      });
+    });
+  },
+
+  deleteJobs: (req, res) => {
+    const data = req.body;
+    deleteJobs(data, (err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      if (!results[0]) {
+        return res.json({
+          success: 0,
+          message: "Jobs record not found",
+        });
+      }
+      return res.json({
+        success: 1,
+        message: "Delete jobs successfully",
       });
     });
   },

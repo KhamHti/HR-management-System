@@ -74,6 +74,7 @@ module.exports = {
   deleteCountry: (req, res) => {
     const body = req.body;
     deleteCountry(body, (err, results) => {
+      console.log(results);
       if (err) {
         console.log(err);
         return;

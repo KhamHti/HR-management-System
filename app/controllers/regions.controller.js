@@ -84,10 +84,12 @@ module.exports = {
           message: "Record not found",
         });
       }
-      return res.json({
-        success: 1,
-        message: "Region deleted successfully",
-      });
+      if (results) {
+        return res.json({
+          success: 1,
+          message: "Region deleted successfully",
+        });
+      }
     });
   },
 };
