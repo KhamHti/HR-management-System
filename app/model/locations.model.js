@@ -30,4 +30,38 @@ module.exports = {
       return callBack(null, results);
     });
   },
+  getLocationByLocationId: (location_id, callBack) => {
+    db.query(
+      `SELECT * FROM LOCATIONS WHERE location_id=?`,
+      [location_id],
+      (err, results) => {
+        if (err) {
+          console.log(err);
+          callBack(err);
+        }
+        return callBack(null, results);
+      }
+    );
+  },
+  updatLocation: (data, callBack) => {
+    db.query(
+      `UPDATE LOCATIONS SET street_address=?, postal_code=?, city=?, state=?, country_id=? WHERE location_id=?`,
+      [
+        data.street_address,
+        data.postal_code,
+        data.city,
+        data.state,
+        data.country_id,
+        data.location_id,
+      ],
+      (err, results) => {
+        if (err) {
+          console.log(err);
+          return callBack(err);
+        }
+        // console.log(results);
+        return callBack(null, results);
+      }
+    );
+  },
 };
