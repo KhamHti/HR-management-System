@@ -36,26 +36,25 @@ module.exports = {
     });
   },
   getOne: (req, res) => {
-    const id = req.params.id;
-    getRegionByRegionID(id, (err, results) => {
+    const region_id = req.params.region_id;
+    getRegionByRegionID(region_id, (err, results) => {
       if (err) {
         console.log(err);
         return;
       }
-      if (!results) {
+      if (!results[0]) {
         return res.json({
           success: 0,
           message: "Record not found",
         });
       }
-      console.log(results);
+      // console.log(results);
       return res.json({
         success: 1,
         data: results,
       });
     });
   },
-  // data မဝင်သေးပါ
   update: (req, res) => {
     const body = req.body;
     updateRegion(body, (err, results) => {
@@ -63,6 +62,12 @@ module.exports = {
         console.log(err);
         return;
       }
+      // if (!results) {
+      //   return res.json({
+      //     success: 0,
+      //     message: "Content must not be empty",
+      //   });
+      // }
       return res.json({
         success: 1,
         message: "Region update successfully",

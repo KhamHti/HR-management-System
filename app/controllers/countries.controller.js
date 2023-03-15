@@ -36,19 +36,18 @@ module.exports = {
     });
   },
   getOne: (req, res) => {
-    const id = req.params.id;
-    getOne(id, (err, results) => {
+    const country_id = req.params.country_id;
+    getOne(country_id, (err, results) => {
       if (err) {
         console.log(err);
         return;
       }
-      if (!results) {
+      if (!results[0]) {
         return res.json({
           success: 0,
           message: "Record not found",
         });
       }
-      //   console.log(results);
       return res.json({
         success: 1,
         data: results,

@@ -13,7 +13,6 @@ router.get("/", getAll);
 
 router.get("/:region_id", getOne);
 
-// data မဝင်သေးပါ
 router.patch("/", update);
 
 router.delete("/", deleteRegion);

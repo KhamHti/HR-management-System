@@ -37,11 +37,11 @@ module.exports = {
       }
     );
   },
-  // data မဝင်သေးပါ
+
   updateRegion: (data, callBack) => {
     db.query(
-      `UPDATE REGIONS SET region_id=?,region_name=? WHERE region_id = ? `,
-      [data.region_id, data.region_name],
+      `UPDATE REGIONS SET region_name=? WHERE region_id = ? `,
+      [data.region_name, data.region_id],
       (err, results) => {
         if (err) {
           callBack(err);
