@@ -13,6 +13,7 @@ module.exports = {
       if (err) {
         console.log(err);
         res.json({
+          success: 0,
           message:
             err.message || "Some error occurred while creating DEPARTMENTS.",
         });
@@ -76,16 +77,16 @@ module.exports = {
         console.log(err);
         return;
       }
-      //   if (!results) {
-      //     return res.json({
-      //       success: 0,
-      //       message: "Department id not found",
-      //     });
-      //   }
+      if (!results) {
+        return res.json({
+          success: 0,
+          message: "Department id not found",
+        });
+      }
       return res.json({
         success: 1,
         message: "Delete department successfully",
-        // data: results,
+        data: results,
       });
     });
   },
